@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { ActionRequest, ActionResponse } from '../../interfaces/action';
-import { Firestore } from '@angular/fire/firestore';
 
 
 @Injectable({
