@@ -33,24 +33,22 @@
 
 <!--Товари-->
 <section class="goods_section">
-    <!--Категорії товарів-->
+
     <ul class="components_menu">
-        <li *ngFor="let component of getArr; let i= index" (click)="onSelectItem(component)" [class.active]="component ==
+
+        <li [routerLink]="[ '/home/' + component.link ]" routerLinkActive="active" *ngFor="let component of listCommponenet; let i= index" (click)="onSelectItem(component)" [class.active]="component ==
                 activeItem">
-            <a class="nav-link">{{component.titel}}</a>
+            <a class="nav-link">{{component.name}}</a>
         </li>
     </ul>
-
-
-    <!--ТОвари-->
 
     <ul class="goods">
         <li class="goods_block border_animation" *ngFor="let goods of goodsArr">
 
-            <div class="goods_image">
+            <div [routerLink]="[ '/home/'+goods.component.link, goods.id ]" class="goods_image">
                 <img [src]="goods.images" class="goodsn_image">
             </div>
-            <a class="goods_title" href="#" itemprop="name">{{goods.name}}</a>
+            <a [routerLink]="[ '/home/'+goods.component.link, goods.id ]" class="goods_title" href="#" itemprop="name">{{goods.name}}</a>
 
             <div class="goods_desc">
                 <p>{{ goods.compound}}</p>

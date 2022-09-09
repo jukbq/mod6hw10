@@ -13,30 +13,36 @@ export class GoodsService {
   private url: any = 'https://busy-stitch-archer.glitch.me';
   private api = { good: `${this.url}/goods` };
 
+
+
   constructor(
     private http: HttpClient
   ) { }
 
 
   getAll(): Observable<GoodsResponse[]> {
-    return this.http.get<GoodsResponse[]>(this.api.good);
+    return this.http.get<GoodsResponse[]>(this.api.good );
+
   };
 
+
   getAllByComponent(name: string): Observable<GoodsResponse[]> {
-    return this.http.get<GoodsResponse[]>(`${this.api.good}?category.path=${name}`);
+    return this.http.get<GoodsResponse[]>(`${this.api.good}?component.link=${name}`);
   }
 
-  getOne(id: number): Observable<GoodsRequest> {
-    return this.http.get<GoodsRequest>(`${this.api.good}/${id}`);
+  getOne(id: number): Observable<GoodsResponse> {
+    return this.http.get<GoodsResponse>(`${this.api.good}/${id}`);
   }
 
   addGood(goods: GoodsRequest): Observable<GoodsResponse> {
     return this.http.post<GoodsResponse>(this.api.good, goods);
   };
 
+
   editGood(goods: GoodsRequest, id: number): Observable<GoodsResponse> {
     return this.http.patch<GoodsResponse>(`${this.api.good}/${id}`, goods);
   };
+
 
   delGood(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api.good}/${id}`);

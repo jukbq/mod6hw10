@@ -13,8 +13,9 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HraderComponent } from './hrader/hrader.component';
-import { FooterComponent } from './footer/footer.component';
+import { HraderComponent } from './commponents/hrader//hrader.component';
+import { FooterComponent } from './commponents/footer/footer.component';
+
 
 //pages
 import { HomeComponent } from './pages/home/home.component';
@@ -25,6 +26,8 @@ import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SaucesComponent } from './pages/sauces/sauces.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CoodInfoComponent } from './pages/good-info/good-info.component';
+import { ActionInfoComponent } from './pages/action-info/action-info.component';
 
 //admin
 import { AdminComponent } from './admin//admin.component';
@@ -32,6 +35,8 @@ import { ActionComponent } from './admin/action/action.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { GoodsComponent } from './admin/goods/goods.component';
 import { OrderComponent } from './admin/order/order.component';
+
+
 
 
 
@@ -54,8 +59,9 @@ import { OrderComponent } from './admin/order/order.component';
     CategoriesComponent,
     GoodsComponent,
     OrderComponent,
+    CoodInfoComponent,
+    ActionInfoComponent,
 
- 
   ],
   imports: [
     BrowserModule,

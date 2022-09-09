@@ -16,7 +16,7 @@ export class ActionsComponent implements OnInit {
   public actions: Array<ActionResponse> = [];
 
   ngOnInit(): void {
-this.getACtiont()
+    this.getACtiont()
   }
 
   getACtiont(): void {

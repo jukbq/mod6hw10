@@ -5,6 +5,7 @@ import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { ComponentsResponse } from 'src/app/shared/interfaces/components';
 import { ComponentsService } from 'src/app/shared/services/comments/comments.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-goods',
@@ -19,8 +20,9 @@ export class GoodsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gooService: GoodsService,
-    private commentsService: ComponentsService,
-    private storsge: Storage
+    private compService: ComponentsService,
+    private storsge: Storage,
+    private actinetedRouted: ActivatedRoute
   ) { }
 
 
@@ -31,7 +33,7 @@ export class GoodsComponent implements OnInit {
   private goodID = 0;
   public edit_status = false;
   public uploadPercent!: number;
-
+public link = ''
 
   ngOnInit(): void {
     this.getCategory()
@@ -48,23 +50,17 @@ export class GoodsComponent implements OnInit {
       price: [null, Validators.required],
       images: [null, Validators.required],
       count: [1]
-
     })
   }
-
-
 
   getCategory(): void {
-    this.commentsService.getAll().subscribe(data => {
+    this.compService.getAll().subscribe(data => {
       this.category = data;
-      this.goodForm.patchValue({
-        category: this.category[0].id
-      })
-      console.log(this.category);
-      
-    })
-
+     })
+ 
+    
   }
+
 
 
   getGoodst(): void {
@@ -75,6 +71,7 @@ export class GoodsComponent implements OnInit {
 
 
   creatGood() {
+   
     if (this.edit_status) {
       this.gooService.editGood(this.goodForm.value, this.goodID).subscribe(() => {
         this.getGoodst();
@@ -153,7 +150,7 @@ export class GoodsComponent implements OnInit {
         })
         await task;
         url = await getDownloadURL(storageRef)
-        console.log(this.uploadPercent);
+   
 
       } catch (e: any) {
         console.error(e)

@@ -40,7 +40,7 @@
         <form [formGroup]="goodForm" (ngSubmit)="creatGood()" class="form_action">
             <div class="top_input">
                 <select formControlName="component" name="component" class="form-select">
-                    <option [ngValue]="category" *ngFor="let category of category">{{category.titel}}</option>
+                    <option [ngValue]="category"  *ngFor="let category of category">{{category.titel}}</option>
                 </select>
 
                 <input formControlName="name" type="text" name="name" class="form-control" placeholder="*Назва" aria-label="Заголовок">
@@ -74,7 +74,6 @@
                 <img [src]="valueByControl('images')">
             </td>
             <button (click)="deleteImage()" type="submit" class="btn">
-
                 Видалити
             </button>
         </div>

@@ -76,7 +76,7 @@ export class ActionComponent implements OnInit {
   };
 
   editAction(action: ActionResponse) {
-    console.log(action);
+
     this.actionForn.patchValue({
       data: action.data,
       name: action.name,
@@ -118,7 +118,7 @@ export class ActionComponent implements OnInit {
         })
         await task;
         url = await getDownloadURL(storageRef)
-        console.log(this.uploadPercent);
+   
 
       } catch (e: any) {
         console.error(e)
@@ -144,7 +144,7 @@ export class ActionComponent implements OnInit {
   deleteImage(): void {
     const task = ref(this.storsge, this.valueByControl('images'));
     deleteObject(task).then(() => {
-      console.log('File deleted');
+
       this.uploadPercent = 0;
       this.actionForn.patchValue({
         images: null

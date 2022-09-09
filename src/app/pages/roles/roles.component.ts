@@ -4,6 +4,16 @@ import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { ComponentsService } from 'src/app/shared/services/comments/comments.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 
+const LIST: any[] = [
+  { name: 'Всі', link: 'all' },
+  { name: 'Філадельфія', link: 'filadelfia' },
+  { name: 'Каліфорнія', link: 'californian' },
+  { name: 'Запечені', link: 'baked' },
+  { name: 'Фірмові', link: 'firm' },
+  { name: 'Макі', link: 'maki' },
+  { name: 'Праміум', link: 'premium' }
+];
+
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -16,14 +26,15 @@ export class RolesComponent implements OnInit {
     private gooService: GoodsService
   ) { }
 
+  public listCommponenet: any[] = LIST;
   public getArr!: Array<ComponentsResponse>
   public goodsArr!: Array<GoodsResponse>
   public activeItem: any;
+  public compName!: string
 
   ngOnInit(): void {
     this.getCategory()
-    this.getGoodst()
-
+    this.getGood()
   }
 
   getCategory(): void {
@@ -32,15 +43,29 @@ export class RolesComponent implements OnInit {
     })
   }
 
-  getGoodst(): void {
+  getGood(): void {
     this.gooService.getAll().subscribe(data => {
       this.goodsArr = data
     })
   }
 
-  onSelectItem(component: ComponentsResponse): void {
-    this.activeItem = component;
+  getGoodst(): void {
+    this.gooService.getAllByComponent(this.compName).subscribe(data => {
+      this.goodsArr = data
 
+    })
   }
 
+
+
+  onSelectItem(component: ComponentsResponse): void {
+    this.activeItem = component;
+    this.compName = component.link
+    if (this.compName == 'all') {
+      this.getGood()
+    } else {
+      this.getGoodst()
+    }
+
+  }
 }

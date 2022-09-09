@@ -108,7 +108,7 @@ export class CategoriesComponent implements OnInit {
         })
         await task;
         urlIcom = await getDownloadURL(storageRef)
-        console.log(this.uploadPercent);
+
 
       } catch (e: any) {
         console.error(e)
@@ -122,9 +122,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   delCategory(index: ComponentsResponse) {
-    console.log('asdasdasd');
-    
-    const task = ref(this.storsgeIcon, index.images);
+      const task = ref(this.storsgeIcon, index.images);
     deleteObject(task)
     this.commentsService.delAction(index.id).subscribe(() => {
       this.getCategory();
