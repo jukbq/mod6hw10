@@ -15,6 +15,7 @@ const LIST: any[] = [
   { name: 'Праміум', link: 'premium' }
 ];
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

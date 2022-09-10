@@ -86,8 +86,53 @@
 
 
     <!-----------------Кошик--------------------------->
-    <div class="header_basket ">
-        <img src="https://firebasestorage.googleapis.com/v0/b/mod6-progect.appspot.com/o/assets%2Ficon%2Fbasket.svg?alt=media&token=f7e95ed7-9358-4217-9f4c-ba4bc665db4f" lass="img-fluid " alt=" " srcset=" ">
-    </div>
-
+    <button type="button" class="btn header_basket" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img
+            src="https://firebasestorage.googleapis.com/v0/b/mod6-progect.appspot.com/o/assets%2Ficon%2Fbasket.svg?alt=media&token=f7e95ed7-9358-4217-9f4c-ba4bc665db4f"
+            lass="img-fluid " alt=" " srcset=" ">
+        <span class="count">{{count}}</span>
+        <span class="summ"><b>{{summ}}</b> грн.</span>
+    </button>
 </header>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <ul class="order_list">
+                <li class="order_good" *ngFor="let order of basket">
+                    <div class="img">
+                        <a target="_blank" [routerLink]="[
+                            '/home/'+order.component.link, order.id ]">
+                            <div class="image">
+                                <img [src]="order.images">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="name">
+                        <a target="_blank" [routerLink]="[
+                            '/home/'+order.component.link, order.id ]">
+                            {{order.name}}
+                        </a>
+                    </div>
+                    <div class="count_price">
+                        <div class="quantity_goods">
+                            <button (click)="quantity_goods(order, false)" type="button" class="decrement">-</button>
+                            <input [value]="order.count" readonly="" class="goods_qty" tabindex="-1" max="999">
+                            <button (click)="quantity_goods(order, true)" type="button" class="increment">+</button>
+                        </div>
+                        <div class="price_default">
+                            <b class="price">{{order.price}}</b> грн </div>
+                        <button type="button" class="btn" (click)="delOrder(order)">
+                            <fa-icon [icon]="trashIcon"></fa-icon>
+                        </button>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Понял</button>
+            </div>
+        </div>
+    </div>
+</div>

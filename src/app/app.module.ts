@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,6 +63,7 @@ import { OrderComponent } from './admin/order/order.component';
     OrderComponent,
     CoodInfoComponent,
     ActionInfoComponent,
+    
 
   ],
   imports: [
@@ -70,6 +73,7 @@ import { OrderComponent } from './admin/order/order.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase()),
