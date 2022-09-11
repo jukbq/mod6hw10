@@ -89,7 +89,17 @@ export class HraderComponent implements OnInit {
     basket.splice(index, 1);
     localStorage.setItem('basket', JSON.stringify(basket))
     this.orderService.chageBasket.next(true)
-    console.log(basket);
+  
+    
+  }
+
+  addOrder(order: any){
+       this.orderService.addOrder(order).subscribe(() => {
+      localStorage.removeItem('basket');
+         location.reload();
+            } )
+
+    
     
   }
 

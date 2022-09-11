@@ -127,11 +127,10 @@
                         </button>
                     </div>
                 </li>
-
             </ul>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Понял</button>
+                <span class="summ">Сума <b>{{summ}}</b> грн.</span>
+                <button (click)="addOrder(basket)" type="button" class="btn btn-primary">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
             </div>
         </div>
     </div>
