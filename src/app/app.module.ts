@@ -31,12 +31,14 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CoodInfoComponent } from './pages/good-info/good-info.component';
 import { ActionInfoComponent } from './pages/action-info/action-info.component';
 
+
 //admin
 import { AdminComponent } from './admin//admin.component';
 import { ActionComponent } from './admin/action/action.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { GoodsComponent } from './admin/goods/goods.component';
 import { OrderComponent } from './admin/order/order.component';
+
 
 
 
@@ -63,6 +65,7 @@ import { OrderComponent } from './admin/order/order.component';
     OrderComponent,
     CoodInfoComponent,
     ActionInfoComponent,
+
     
 
   ],

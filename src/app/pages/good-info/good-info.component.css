@@ -5,12 +5,12 @@
 section {
   width: 100vw;
   height: auto;
+  margin-top: 130px;
 }
 section .item_details {
   width: 80%;
   display: flex;
   margin: auto;
-  margin-top: 200px;
 }
 section .item_details .goods_image {
   width: 50%;

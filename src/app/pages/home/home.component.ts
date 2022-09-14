@@ -4,6 +4,7 @@ import { ComponentsResponse, CopmponentsRequest } from 'src/app/shared/interface
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
 import { ComponentsService } from 'src/app/shared/services/comments/comments.service';
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 const LIST: any[] = [
   { name: 'Всі', link: 'all' },
@@ -23,13 +24,13 @@ const LIST: any[] = [
 })
 export class HomeComponent implements OnInit {
 
-public goodArr: Array<GoodsResponse> = [];
 
   constructor(
     private commmpService: ComponentsService,
     private gooService: GoodsService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private orderService: OrderService
   ) {
     this.router.events.subscribe()
    }
@@ -40,11 +41,12 @@ public goodArr: Array<GoodsResponse> = [];
   public goodsArr!: Array<GoodsResponse>
   public activeItem: any;
   public compName!: string
-
+  public goodsData!: GoodsResponse;
 
   ngOnInit(): void {
     this.getCategory()
     this.getGood()
+ 
   
   }
 
@@ -79,6 +81,35 @@ public goodArr: Array<GoodsResponse> = [];
       this.getGoodst()
     }
 
+  }
+
+  quantity_goods(good: GoodsResponse, value: boolean): void {
+    if (value) {
+      ++good.count
+    } else if (!value && good.count > 1) {
+      --good.count
+    }
+  }
+
+  addToBasket(goods: GoodsResponse): void {
+    let basket: Array<GoodsResponse> = []
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+      basket = JSON.parse(localStorage.getItem('basket') as string);
+  if (basket.some(good => good.id === goods.id)) {
+        const index = basket.findIndex(good => good.id === goods.id);
+        basket[index].count += goods.count;
+      } else {
+        basket.push(goods);
+      }
+    } else {
+      basket.push(goods); 
+    }
+    console.log(basket);
+    console.log(goods);
+    
+   localStorage.setItem('basket', JSON.stringify(basket))
+    goods.count = 1
+    this.orderService.chageBasket.next(true) 
   }
 
 

@@ -37,9 +37,7 @@ export class HraderComponent implements OnInit {
   quantity_goods(goods: GoodsResponse, value: boolean): void {
     if (value) {
       ++goods.count
-
       this.editBasket(goods, value)
-
     } else if (!value && goods.count > 1) {
       --goods.count
       this.editBasket(goods, value)
@@ -50,8 +48,9 @@ export class HraderComponent implements OnInit {
   addToBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
+      this.summPrice()
     }
-    this.summPrice()
+
 
   }
 
@@ -81,7 +80,7 @@ export class HraderComponent implements OnInit {
     this.orderService.chageBasket.next(true)
   }
 
-  delOrder(order:any){
+  delOrder(order: any) {
     let basket: Array<GoodsResponse> = [];
     basket = JSON.parse(localStorage.getItem('basket') as string);
     console.log(basket);
@@ -89,18 +88,20 @@ export class HraderComponent implements OnInit {
     basket.splice(index, 1);
     localStorage.setItem('basket', JSON.stringify(basket))
     this.orderService.chageBasket.next(true)
-  
-    
+
+
   }
 
-  addOrder(order: any){
-       this.orderService.addOrder(order).subscribe(() => {
+  addOrder(order: any) {
+    this.orderService.addOrder(order).subscribe(() => {
       localStorage.removeItem('basket');
-         location.reload();
-            } )
+      location.reload();
+      console.log('1111');
+      
+    })
 
-    
-    
+
+
   }
 
 

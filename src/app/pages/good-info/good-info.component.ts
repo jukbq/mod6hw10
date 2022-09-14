@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GoodsResponse } from 'src/app/shared/interfaces/goods';
+
 import { GoodsService } from 'src/app/shared/services/goods/goods.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
@@ -11,18 +12,29 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 })
 export class CoodInfoComponent implements OnInit {
 
-  public goodsData!: GoodsResponse
+  public goodsData!: GoodsResponse;
+  public goodArr: Array<GoodsResponse> = [];
+
 
   constructor(
     private goodService: GoodsService,
     private activatedRoute: ActivatedRoute,
-    private orderService: OrderService
-  ) { }
+    private orderService: OrderService,
+    private router: Router
+
+  ) {
+    this.router.events.subscribe()
+  }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.goodsData = response['goodInfo']
+      this.goodArr = response['goodInfo']
+      console.log(this.router);
     })
+
+
+
   }
 
   quantity_goods(good: GoodsResponse, value: boolean): void {
@@ -42,7 +54,7 @@ export class CoodInfoComponent implements OnInit {
         basket[index].count += goods.count;
       } else {
         basket.push(goods);
-      } 
+      }
     } else {
       basket.push(goods);
     }
@@ -50,6 +62,8 @@ export class CoodInfoComponent implements OnInit {
     goods.count = 1
     this.orderService.chageBasket.next(true)
   }
+
+
 
 
 }

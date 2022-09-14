@@ -28,7 +28,7 @@ export class OrderService {
 
   addOrder(order: OrderRequest): Observable<OrderResponse> {
     return this.http.post<OrderResponse>(this.api.order, order);
-    console.log(this.api);
+
     
   };
 
