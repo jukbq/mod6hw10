@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "mod6hw09": {
+        "mod6hw10": {
             "projectType": "application",
             "schematics": {},
             "root": "",
@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/mod6hw09",
+                        "outputPath": "dist/mod6hw10",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -62,10 +62,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "mod6hw09:build:production"
+                            "browserTarget": "mod6hw10:build:production"
                         },
                         "development": {
-                            "browserTarget": "mod6hw09:build:development"
+                            "browserTarget": "mod6hw10:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "mod6hw09:build"
+                        "browserTarget": "mod6hw10:build"
                     }
                 },
                 "test": {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './pages/home/home.component';
 import { ActionsComponent } from './pages/actions/actions.component'
 import { RolesComponent } from './pages/roles/roles.component';
@@ -10,8 +11,11 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CoodInfoComponent } from './pages/good-info/good-info.component';
 import { ActionInfoComponent } from './pages/action-info/action-info.component';
+
+
 import { GoodsInfoResolver } from './shared/services/goods-info/goods-info.resolver';
 import { ActionInfoResolver } from './shared/services/action-info/action-info.resolver';
+
 import { AdminComponent } from './admin/admin.component';
 import { ActionComponent } from './admin/action/action.component';
 import { CategoriesComponent } from './admin/categories/categories.component';

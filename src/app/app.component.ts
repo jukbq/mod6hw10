@@ -7,7 +7,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mod6hw09';
+  title = 'mod6hw10';
 
   constructor() {
  }

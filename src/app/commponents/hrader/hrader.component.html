@@ -116,13 +116,13 @@
                     </div>
                     <div class="count_price">
                         <div class="quantity_goods">
-                            <button type="button" class="decrement">-</button>
+                            <button (click)="quantity_goods(order, false)" type="button" class="decrement">-</button>
                             <input [value]="order.count" readonly="" class="goods_qty" tabindex="-1" max="999">
-                            <button  type="button" class="increment">+</button>
+                            <button (click)="quantity_goods(order, true)" type="button" class="increment">+</button>
                         </div>
                         <div class="price_default">
                             <b class="price">{{order.price}}</b> грн </div>
-                        <button type="button" class="btn" >
+                        <button type="button" class="btn" (click)="delOrder(order)">
                             <fa-icon [icon]="trashIcon"></fa-icon>
                         </button>
                     </div>
@@ -130,7 +130,7 @@
             </ul>
             <div class="modal-footer">
                 <span class="summ">Сума <b>{{summ}}</b> грн.</span>
-                <button  type="button" class="btn btn-primary">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+                <button (click)="addOrder(basket)" type="button" class="btn btn-primary">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
             </div>
         </div>
     </div>
